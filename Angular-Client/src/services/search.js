@@ -1,7 +1,7 @@
 angular.module('app')
   .service('search', ($http) => {
     this.filter = (parameter) => {
-      $http.post('search', parameter).then((responce) => {
+      $http.get('search', parameter).then((responce) => {
         console.log('search succeeded');
         console.log(responce);
       }, (responce) => {

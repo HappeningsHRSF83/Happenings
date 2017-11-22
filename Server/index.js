@@ -18,6 +18,11 @@ app.post('/home', (request, response) => {
   response.send('Get request to `/home` received.');
 });
 
+app.get('/search', (request, responce) => {
+  // search the database for activities based on name pass in the request
+  // send back the data
+});
+
 app.use(bodyParser.json());
 
 app.listen(port, (err) => {

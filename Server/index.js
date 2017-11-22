@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const search = require('../database-mongo/search.js');
 
 const app = express();
 const port = 3000;
@@ -16,6 +17,12 @@ app.post('/home', (request, response) => {
   // get top five activity recommendations from database
   // send the top five activity recommendations for the city back to the client
   response.send('Get request to `/home` received.');
+});
+
+app.get('/search', (request, responce) => {
+  search();
+  // search the database for activities based on name pass in the request
+  // send back the data
 });
 
 app.use(bodyParser.json());

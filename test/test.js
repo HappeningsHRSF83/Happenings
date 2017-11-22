@@ -55,7 +55,7 @@ describe('Database Tests', function () {
     });
   });
   // After all tests are finished drop database and close connection
-  after(function (done) {
+  after(function (done) { 
     mongoose.connection.db.dropDatabase(function () {
       mongoose.connection.close(done);
     });

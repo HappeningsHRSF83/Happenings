@@ -2,7 +2,9 @@ angular.module('app')
 
   .component('home', {
     bindings: {},
-    controller: () => {
+    controller: (search) => {
+      this.input = '';
+      this.filter = search.filter;
     },
     templateUrl: '/src/templates/home.html',
   });

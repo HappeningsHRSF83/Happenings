@@ -6,7 +6,8 @@
   </div>
   <div class="filters">Filters:
       <form class="search-input">Search: 
-        <input type="text" placeholder="">
+        <input type="text" placeholder="Fishing..." ng-model="$ctrl.input">
+        <buttom ng-click="$ctrl.filter($ctrl.input)">Let's Go!</buttom>
       </form>
       <form>Cost: 
         <select class="cost-selection">

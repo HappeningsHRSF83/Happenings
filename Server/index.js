@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const search = require('../database-mongo/search.js');
 
 const app = express();
 const port = 3000;
@@ -19,6 +20,7 @@ app.post('/home', (request, response) => {
 });
 
 app.get('/search', (request, responce) => {
+  search();
   // search the database for activities based on name pass in the request
   // send back the data
 });

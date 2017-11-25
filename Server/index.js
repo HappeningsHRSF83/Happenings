@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('../database-mongo/Post.js');
-
+const ref = require('../Helpers/refGenerator.js');
 const app = express();
 const port = 3000;
 
@@ -23,6 +23,13 @@ app.post('/home', (request, response) => {
 app.get('/search/:city/:input', (request, responce) => {
   db.search(request.params.city, request.params.input, (results) => {
     responce.send(results);
+  });
+});
+
+app.post('/save', (request, response) => {
+  request.body.reference = ref(request.body.city);
+  db.save(request.body, () => {
+    response.send();
   });
 });
 

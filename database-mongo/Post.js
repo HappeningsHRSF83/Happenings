@@ -53,6 +53,7 @@ const search = (input, callback) => {
 };
 
 const save = (input, cb) => {
+  Post.find({name: input.name } ).remove();
   Post.create(input, function (err) {
     if (err) {
       throw err;

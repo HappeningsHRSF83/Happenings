@@ -35,7 +35,7 @@ const fetchTopFive = (city, callback) => {
 };
 
 const search = (input, callback) => {
-  console.log('input in search', input)
+  console.log('input in search', input);
   Post.find({
     city: { $regex: `${input.city}`, $options: 'i' },
     name: { $regex: `${input.input}`, $options: 'i' },
@@ -53,6 +53,7 @@ const search = (input, callback) => {
 };
 
 const save = (input, cb) => {
+  console.log('post has been deleted, now saving');
   Post.create(input, function (err) {
     if (err) {
       throw err;
@@ -65,7 +66,6 @@ const save = (input, cb) => {
 const fetchEventByReference = (eventReference, callback) => {
   Post.find({ reference: `${eventReference}` }).exec((err, result) => {
     if (err) {
-      console.log('Failed to retrieve the event based on reference.');
     } else if (result[0]) {
       callback(result);
     } else {
@@ -86,9 +86,17 @@ const like = (name, value) => {
   );
 };
 
+const deleteNSave = (input, cb) => {
+  Post.find({ reference: `${input.reference}` })
+    .remove(cb);
+};
+
+// save(input, cb)
+
 module.exports = Post;
 module.exports.fetchTopFive = fetchTopFive;
 module.exports.search = search;
 module.exports.save = save;
 module.exports.fetchEventByReference = fetchEventByReference;
 module.exports.like = like;
+module.exports.deleteNSave = deleteNSave;

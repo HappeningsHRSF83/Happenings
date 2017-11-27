@@ -53,11 +53,12 @@ const search = (input, callback) => {
 };
 
 const save = (input, cb) => {
+  Post.find({reference: input.reference } ).remove();
   Post.create(input, function (err) {
     if (err) {
       throw err;
-    } else {
       cb();
+    } else {
     }
   });
 };

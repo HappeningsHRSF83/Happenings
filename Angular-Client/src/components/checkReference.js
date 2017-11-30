@@ -1,8 +1,9 @@
-angular.module('app')
+angular
+  .module('app')
 
   .component('checkReference', {
     bindings: {
-      changeView: '<',
+      changeView: '<'
     },
     controller: function checkReferenceCtrl(findEventByReference) {
       this.searched = false;
@@ -18,12 +19,15 @@ angular.module('app')
          * @param  {object} input - the object to send to the server
          * @param  {object} eventData - the data retrieved from the server
          */
-        findEventByReference.fetchEditEvent({ reference: this.reference }, (eventData) => {
-          this.eventFound = eventData;
-          this.searched = false;
-          this.changeView('edit');
-        });
+        findEventByReference.fetchEditEvent(
+          { reference: this.reference },
+          eventData => {
+            this.eventFound = eventData;
+            this.searched = false;
+            this.changeView('edit');
+          }
+        );
       };
     },
-    templateUrl: '/src/templates/checkReference.html',
+    templateUrl: '/src/templates/checkReference.html'
   });

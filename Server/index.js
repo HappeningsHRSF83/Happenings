@@ -21,6 +21,7 @@ app.get('/', (request, response) => {
  * @param  {object} response - what is sent back in response to the get post request and contains at most five event data for the user selected city.
  */
 app.post('/home', (request, response) => {
+  console.log("you're home");
   db.fetchTopFive(request.body.location, (result) => {
     response.send(result);
   });
@@ -59,7 +60,7 @@ app.post('/edit', (request, response) => {
 
  The second is when the user chooses to edit an event. The user will already have a reference so the server will go to the database and delete the old data, and save a completely new one.
 
- After it has handled any of the two events above, it will return to the client a reference. 
+ After it has handled any of the two events above, it will return to the client a reference.
  * @param  {object} request - what is sent with the post request and cotanins the event data the user wants to save to the database
  * @param  {function} response - what is sent back from the post request and contains the reference of the event
  */
